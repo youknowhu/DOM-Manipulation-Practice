@@ -7,6 +7,35 @@
   <body>
     <div>
       <p>Put me at the top!</p>
+      <button> Click me! </button>
     </div>
   </body>
+  <script>
+
+    function toggleButton() {
+      const button = document.querySelector('button');
+
+
+      const disableCallback = () => {
+        button.removeAttribute('disabled');
+        button.innerHTML = 'Click Me!';
+        document.removeEventListener('click', disableCallback);
+        document.addEventListener('click', enableCallback);
+      }
+
+      const enableCallback = () => {
+        button.setAttribute('disabled', '');
+        button.innerHTML = 'Don\'t Click Me!';
+        document.removeEventListener('click', enableCallback);
+        document.addEventListener('click', disableCallback);
+      }
+
+      document.addEventListener('click', enableCallback);
+      button.addEventListener('click', e => e.stopPropogation);
+    }
+
+    toggleButton();
+
+
+  </script>
 </html>
