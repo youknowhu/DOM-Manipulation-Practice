@@ -46,9 +46,13 @@ class Node {
 }
 
 function createMinimalTree(array){
+  if (array.length === 0) return;
 
-  const mid = Math.floor(array.length / 2);
+  const midIdx = Math.floor(array.length / 2);
 
-  
+  const midNode = new Node(array[midIdx],
+    createMinimalTree(array.slice(0, midIdx)),
+    createMinimalTree(array.slice(midIdx + 1)))
+  return midNode;
 
 }
