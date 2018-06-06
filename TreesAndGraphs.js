@@ -54,5 +54,33 @@ function createMinimalTree(array){
     createMinimalTree(array.slice(0, midIdx)),
     createMinimalTree(array.slice(midIdx + 1)))
   return midNode;
+}
+
+
+function createLinkedList(headNode) {
+  let queue = [headNode];
+
+  while (queue.length > 0) {
+    const childrenQueue = [];
+    const newLinkedList = queue[0]
+
+    //check for children and also create linkedList
+
+
+    for (let i = 0; i < queue.length; i++) {
+      const node = queue[i];
+
+      if (node.left) childrenQueue.push(node.left);
+      if (node.right) childrenQueue.push(node.right);
+
+      newLinkedList.add(node);
+    }
+
+
+    queue = childrenQueue;
+  }
+}
+
+function checkBalanced(root) {
 
 }
